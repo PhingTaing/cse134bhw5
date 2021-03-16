@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Phing Taing" />
+  <meta name="description" content="portfolio-site" />
+
+  <title>Phing Taing</title>
+
+  <link rel="preload" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="preload">
+  <link rel="preload" href="images/test.ico" rel="icon">
+  <link href="style.css" rel="stylesheet">
+
+  <style>
+    @font-face {
+      src: url(Garamond-Regular.otf);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    html {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    button {
+        text-align: center;
+        background-color: #ffe6ff;
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 10px;
+        border-color: #ffe6ff;
+        cursor: pointer;
+    }
+
+    nav {
+        background-color: #ffe6ff;
+        padding: 18px;
+        margin: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <button id="welcome">PHING TAING</button>
+      <button id="login" type="button">Login</button>
+    </nav>
+
+    <script type="text/javascript">
+      document.getElementById("welcome").addEventListener("click", () =>{alert("Welcome to my portfolio site!");});
+    </script>
+  </header>
+
+  <main>
+    <video autoplay loop muted playsinline>
+      <source src="images/pinkclouds.mp4" type="video/mp4">
+    </video>
+
+    <section class="overlay text-darkgrey">
+      <h1>> Hello, I'm Phing!</h1>
+      <p>Computer Engineering @ UCSD</p>
+      <p>Date/Time: <span id="dt"></span></p>
+      <script>
+        var dt = new Date();
+        document.getElementById("dt").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+      </script>
+    </section>
+
+    <section>
+      <div>
+        <button id="addBlog">Add Blog</button>
+        <h2 id="blogs" class="text-center text-pink">Blogs</h2>
+      </div>
+      <div id="list" class="content"></div>
+      <template id="postTemp">
+        <article class="blog-post">
+          <menu>
+            <svg class="edit" viewBox="0 0 24 24"></svg>
+            <svg class="delete" viewBox="0 0 24 24"></svg>
+          </menu>
+          <h3><slot name="title">Title</slot></h3>
+          <slot name="author">Author</slot><br>
+          <slot name="date">Date</slot><br>
+          <p>
+            <slot name="content">Content</slot>
+          </p>
+        </article>
+      </template>
+    </section>
+
+    <section class="bg-lightgrey" id="about">
+      <article>
+        <h2 class="text-center text-pink">ABOUT ME</h2>
+        <br/>
+        <div class="grid-container-about">
+          <div class="m-auto profile">
+            <br/>
+            <img class="mb-3 d-block mx-auto img-thumbnail" src="images/profile.JPG"
+              alt="headshot" height="290" width="290">
+          </div>
+
+          <div class="m-auto intro">
+            <p class="text-darkgrey">Hi! I am a senior at the University of
+              California, San Diego, expecting to graduate in June 2021. My
+              major is Computer Engineering. I am currently looking for full
+              time roles in <i>front-end web development</i>. Looking forward
+              to connect with you!
+            </p>
+          </div>
+
+          <div class="m-auto course">
+            <h3 class="text-pink">COURSEWORK</h3>
+            <ul class="text-darkgrey">
+              <li>CSE 30: Computer Organization and System Programming</li>
+              <li>CSE 100: Advanced Data Structure</li>
+              <li>CSE 101: Design and Analysis of Algorithm</li>
+              <li>CSE 110: Software Engineering</li>
+              <li>CSE 120: Principle of Computer Operating System</li>
+            </ul>
+          </div>
+
+          <div class="m-auto skills">
+            <h3 class="text-pink">SKILLS</h3>
+            <ul class="text-darkgrey">
+              <li>Java</li>
+              <li>C, C++</li>
+              <li>MATLAB</li>
+              <li>HTML/JS/CSS</li>
+              <li>Android Studio</li>
+              <li>Unix/Linux</li>
+              <li>Vim</li>
+              <li>Git</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="bg-darkgrey" id="projects">
+      <h2 class="text-pink text-center">PROJECTS</h2>
+      <p class="text-lightgrey text-center">These are some of the
+        projects that I have done!</p>
+
+      <article class="grid-container">
+        <div >
+          <h3 class="text-pink">2048 Game</h3>
+          <img src="images/2048.jpg" alt="2048">
+          <ul class="text-lightgrey">
+            <li>Using Java to design a terminal based version of the game 2048</li>
+            <li>takes iser input in the user's interface in order to move tiles</li>
+          </ul>
+        </div>
+
+        <div >
+          <h3 class="text-pink">Linux 'ls' Command</h3>
+          <img src="images/ls.jpg" alt="ls">
+          <ul class="text-lightgrey">
+            <li>using C and ARM assembly language to design the 'ls' command</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-pink">Autocomplete</h3>
+          <img src="images/autocomplete.jpg" alt="autocomplete">
+          <ul class="text-lightgrey">
+            <li>using trie as the backend structure to replicate and efficient
+              autocomplete function in C++</li>
+            </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="bg-lightgrey" id="contact">
+      <h2 class="text-pink text-center">CONTACT</h2>
+      <h3 class="text-darkgrey text-center">I would love to further
+        connect!</h3>
+      <article class="text-center">
+        <ul>
+          <li class="list-inline">
+            <a href="mailto:cptaing@ucsd.edu" target = "_blank">
+              <img border="0" alt="email" src="images/mail.png" width="50"
+              height="50">
+            </a>
+          </li>
+
+          <li class="list-inline">
+            <a rel="noopener" href="https://www.linkedin.com/in/phing-taing/"
+            target = "_blank">
+              <img border="0" alt="linkedin" src="images/linkedin.png"
+              width="50" height="50">
+            </a>
+          </li>
+
+          <li class="list-inline">
+            <a rel="noopener" href="https://github.com/PhingTaing" target = "_blank">
+              <img border="0" alt="github" src="images/github.png"
+              width="50" height="50">
+            </a>
+          </li>
+        </ul>
+      </article>
+    </section>
+</main>
+<footer class="bg-darkgrey text-center text-lightgrey">
+  <p>&copy; Phing Taing 2021</p>
+</footer>
+
+<script src="login.js"></script>
+<script src="post.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyABKQ3wvAxpWDiNOFnAq2_FwgbgLO8z0EA",
+    authDomain: "phingtaingcse134bhw5.firebaseapp.com",
+    databaseURL: "https://phingtaingcse134bhw5-default-rtdb.firebaseio.com",
+    projectId: "phingtaingcse134bhw5",
+    storageBucket: "phingtaingcse134bhw5.appspot.com",
+    messagingSenderId: "508205478935",
+    appId: "1:508205478935:web:49224d4f8659e1b5dfd852",
+    measurementId: "G-9XXKFK3N2V"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+</body>
+</html>

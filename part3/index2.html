@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height,
+      initial-scale=1, shrink-to-fit=no">
+    <meta name = "description" content = "portfolio-site">
+    <meta name = "author" content = "Phing-Taing">
+    <link rel="preload" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="preload">
+
+    <title>Phing Taing</title>
+
+    <link rel="preload" href="images/test.ico" rel="icon">
+    <link href="style.css" rel="stylesheet">
+
+    <style>
+      @font-face {
+        src: url(Garamond-Regular.otf);
+        font-family: 'Cormorant Garamond', serif;
+      }
+
+      html {
+        font-family: 'Cormorant Garamond', serif;
+      }
+
+      button {
+          text-align: center;
+          background-color: #ffe6ff;
+          padding: 10px;
+          font-size: 15px;
+          border-radius: 10px;
+          border-color: #ffe6ff;
+          cursor: pointer;
+      }
+
+      nav {
+          background-color: #ffe6ff;
+          padding: 18px;
+          margin: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <button id="welcome">PHING TAING</button>
+        <a href="#about">ABOUT ME</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#contact">CONTACT</a>
+        <a href="files/Resume.pdf">RESUME</a>
+
+        <button type="button" id="login">Login</button>
+      </nav>
+
+      <script type="text/javascript">
+        document.getElementById("welcome").addEventListener("click", () =>{alert("Welcome to my portfolio site!");});
+      </script>
+    </header>
+
+    <main>
+      <video autoplay loop muted playsinline>
+        <source src="images/pinkclouds.mp4" type="video/mp4">
+      </video>
+
+      <section class="overlay text-darkgrey">
+        <h1>> Hello, I'm Phing!</h1>
+        <p>Computer Engineering @ UCSD</p>
+        <p>Date/Time: <span id="dt"></span></p>
+        <script>
+          var dt = new Date();
+          document.getElementById("dt").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+        </script>
+      </section>
+
+      <section class="bg-darkgrey" id="blog">
+        <div class="text-center text-pink">
+          <button type="button" id="addBlog">Add</button>
+          <h2 id="blogs">Blogs</h2>
+        </div>
+        <div id="list"></div>
+
+        <template id="postTemp">
+          <article class="post">
+            <menu>
+              <svg class="edit" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+              <svg class="delete" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+            </menu>
+
+            <h3><slot name="article_name">Article Name: </slot></h3><br>
+            <slot name="name">Name: </slot><br>
+            <slot name="article_body">Article Body: </slot><br>
+            <slot name="date">Date: </slot><br>
+          </article>
+        </template>
+      </section>
+
+      <section class="bg-lightgrey" id="about">
+        <article>
+          <h2 class="text-center text-pink">ABOUT ME</h2>
+          <br/>
+          <div class="grid-container-about">
+            <div class="m-auto profile">
+              <br/>
+              <img class="mb-3 d-block mx-auto img-thumbnail" src="images/profile.JPG"
+                alt="headshot" height="290" width="290">
+            </div>
+
+            <div class="m-auto intro">
+              <p class="text-darkgrey">Hi! I am a senior at the University of
+                California, San Diego, expecting to graduate in June 2021. My
+                major is Computer Engineering. I am currently looking for full
+                time roles in <i>front-end web development</i>. Looking forward
+                to connect with you!
+              </p>
+            </div>
+
+            <div class="m-auto course">
+              <h3 class="text-pink">COURSEWORK</h3>
+              <ul class="text-darkgrey">
+                <li>CSE 30: Computer Organization and System Programming</li>
+                <li>CSE 100: Advanced Data Structure</li>
+                <li>CSE 101: Design and Analysis of Algorithm</li>
+                <li>CSE 110: Software Engineering</li>
+                <li>CSE 120: Principle of Computer Operating System</li>
+              </ul>
+            </div>
+
+            <div class="m-auto skills">
+              <h3 class="text-pink">SKILLS</h3>
+              <ul class="text-darkgrey">
+                <li>Java</li>
+                <li>C, C++</li>
+                <li>MATLAB</li>
+                <li>HTML/JS/CSS</li>
+                <li>Android Studio</li>
+                <li>Unix/Linux</li>
+                <li>Vim</li>
+                <li>Git</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="bg-darkgrey" id="projects">
+        <h2 class="text-pink text-center">PROJECTS</h2>
+        <p class="text-lightgrey text-center">These are some of the
+          projects that I have done!</p>
+
+        <article class="grid-container">
+          <div >
+            <h3 class="text-pink">2048 Game</h3>
+            <img src="images/2048.jpg" alt="2048">
+            <ul class="text-lightgrey">
+              <li>Using Java to design a terminal based version of the game 2048</li>
+              <li>takes iser input in the user's interface in order to move tiles</li>
+            </ul>
+          </div>
+
+          <div >
+            <h3 class="text-pink">Linux 'ls' Command</h3>
+            <img src="images/ls.jpg" alt="ls">
+            <ul class="text-lightgrey">
+              <li>using C and ARM assembly language to design the 'ls' command</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-pink">Autocomplete</h3>
+            <img src="images/autocomplete.jpg" alt="autocomplete">
+            <ul class="text-lightgrey">
+              <li>using trie as the backend structure to replicate and efficient
+                autocomplete function in C++</li>
+              </ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="bg-lightgrey" id="contact">
+        <h2 class="text-pink text-center">CONTACT</h2>
+        <h3 class="text-darkgrey text-center">I would love to further
+          connect!</h3>
+        <article class="text-center">
+          <ul>
+            <li class="list-inline">
+              <a href="mailto:cptaing@ucsd.edu" target = "_blank">
+                <img border="0" alt="email" src="images/mail.png" width="50"
+                height="50">
+              </a>
+            </li>
+
+            <li class="list-inline">
+              <a rel="noopener" href="https://www.linkedin.com/in/phing-taing/"
+              target = "_blank">
+                <img border="0" alt="linkedin" src="images/linkedin.png"
+                width="50" height="50">
+              </a>
+            </li>
+
+            <li class="list-inline">
+              <a rel="noopener" href="https://github.com/PhingTaing" target = "_blank">
+                <img border="0" alt="github" src="images/github.png"
+                width="50" height="50">
+              </a>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="bg-darkgrey text-center text-lightgrey">
+      <p>@Phing Taing 2021</p>
+    </footer>
+
+    <script src="login.js"></script>
+    <script src="post.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+
+    <script src="/__/firebase/8.3.0/firebase-app.js"></script>
+    <script src="/__/firebase/8.3.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/init.js"></script>
+
+    <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyABKQ3wvAxpWDiNOFnAq2_FwgbgLO8z0EA",
+      authDomain: "phingtaingcse134bhw5.firebaseapp.com",
+      databaseURL: "https://phingtaingcse134bhw5-default-rtdb.firebaseio.com",
+      projectId: "phingtaingcse134bhw5",
+      storageBucket: "phingtaingcse134bhw5.appspot.com",
+      messagingSenderId: "508205478935",
+      appId: "1:508205478935:web:49224d4f8659e1b5dfd852",
+      measurementId: "G-9XXKFK3N2V"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    var credential;
+    var token;
+    var user= auth.currentUser;
+
+    var provider = new firebase.auth.GoogleAuthProvider();
+    .signInWithPopup(provider)
+    .then((result) => {
+      credential= result.credential;
+      token= credential.accessToken;
+      user= result.user;
+      showList();
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage= error.message;
+      var email= error.email;
+      var credential= error.credential;
+    });
+    function showList() {
+      document.getElementById('list').style.display= 'block';
+    }
+
+    var db= firebase.firestore();
+    this.upload = function(title, body) {
+        var date = new Date();
+        db.collection("blogs").add({
+            title: title,
+            body: body,
+            date: date,
+            user_id: user.uid,
+        })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch((error) => {
+            console.error("Error adding document: ", error);
+        });
+    }
+
+    function showAllBlogs() {
+      db.collection("blogs").get().then((querySnapshot) => {
+        querySnapshot.forEach((blog) => {
+          var data= blog.data();
+          console.log('${blog.id}');
+          console.log('${data.title}');
+          console.log('${data.body}');
+          console.log('${data.date}');
+          console.log('${data.user_id}');
+        })
+      })
+    }
+  </script>
+  </body>
+</html>
