@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: garamond;
+}
+
+body {
+  font-family: garamond;
+  line-height: 1.6;
+}
+
+header {
+  text-align: right;
+  padding: 1em;
+  width: 100%;
+  background-color: #929292;
+  color: #e8aa9f;
+  font-family: garamond;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+header:hover {
+  color:#f8f9fa;
+}
+
+a {
+  color: #e8aa9f;
+}
+
+a:hover, button:hover{
+  color:#f8f9fa;
+  transition: .5s ease-in-out .5s;
+  transform: perspective(50px);
+}
+
+button {
+  background-color: #929292;
+  color: #e8aa9f;
+  border: none;
+  font-family: garamond;
+  font-size: 30px;
+  font-weight: 700;
+  float: left;
+}
+
+video {
+  vertical-align: middle;
+  background-size: auto;
+  width: 100vw;
+  height: 88vh;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 250%;
+  animation: typing 3.5s steps(40, end);
+}
+
+@keyframes typing {
+  from{ width: 0 }
+  to{ width: 100% }
+}
+
+@media screen and (min-width: 1030px){
+  .overlay {
+    top: 20%;
+    font-size: 10vh;
+    animation: typing 3.5s steps(40, end);
+  }
+}
+
+.text-pink{
+  color: #e8aa9f;
+}
+
+.text-lightgrey{
+  color: #f8f9fa;
+}
+
+.text-darkgrey{
+  color: #929292;
+}
+
+.bg-lightgrey{
+  background-color: #f8f9fa;
+}
+
+.bg-darkgrey{
+  background-color: #929292;
+}
+
+.text-center{
+  text-align: center!important;
+}
+
+.m-auto{
+  margin: auto!important;
+}
+
+.mb-3{
+  margin-bottom: 3rem!important;
+}
+
+.m-auto{
+  margin: auto!important;
+}
+
+.ml-auto .mx-auto{
+  margin-left: auto!important;
+}
+
+.mr-auto .mx-auto{
+  margin-right: auto!important;
+}
+
+.d-block{
+  display: block!important;
+}
+
+.grid-container-about{
+  display: grid;
+  grid-template-areas: "profile intro"
+                       "course skills";
+  grid-gap: 50px;
+  padding: 50px;
+}
+
+img{
+  vertical-align: middle;
+  border-style: none;
+}
+
+.img-thumbnail{
+  padding: .25rem;
+  background-color: #FFFFFF;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-gap: 20px;
+  padding: 10px;
+  margin: 30px;
+}
+
+.list-inline{
+  display: inline-block;
+  align-items: center;
+  padding: 5px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
