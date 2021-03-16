@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>methodtest</title>
+
+  </head>
+
+  <body>
+    <header>
+      <h1>CSE 134B HW 5 Part 1</h1>
+    </header>
+    <main>
+      <section>
+        <form>
+          <input type="hidden" id="id">
+
+          <label for="article_name">Article Name: </label><br>
+          <input id="article_name" type="text"><br>
+
+          <label for="article_body">Article Body: </label><br>
+          <textarea form="body" id="article_body" rows="10" cols="20"></textarea>
+
+          <input name="date" type="hidden" id="date">
+        </form>
+      </section>
+
+      <button type="button" id="postBtn"">Post</button>
+      <button type="button" id="getBtn"">Get</button>
+      <button type="button" id="putBtn"">Put</button>
+      <button type="button" id="deleteBtn">Delete</button><br>
+      
+      <textarea id="response" rows="40" cols="80"></textarea>
+    </main>
+
+    <script type="module">
+      document.getElementById('date').value= new Date();
+
+      import * as Module from './method.js';
+      document.getElementById('postBtn').addEventListener('click', Module.postBtn)
+      document.getElementById('getBtn').addEventListener('click', Module.getBtn)
+      document.getElementById('putBtn').addEventListener('click', Module.putBtn)
+      document.getElementById('deleteBtn').addEventListener('click', Module.deleteBtn)
+    </script>
+
+  </body>
+</html>
